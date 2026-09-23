@@ -291,7 +291,7 @@
       font-weight: bold;
     }
     .buy-btn {
-      background-color: #f57224;
+      background-color: #25d366;
       color: white;
       text-align: center;
       text-decoration: none;
@@ -416,7 +416,7 @@
 </head>
 <body>
 
-  <!-- Login Modal (Admin Number removed from placeholder) -->
+  <!-- Login Modal -->
   <div class="auth-overlay" id="authOverlay">
     <div class="auth-box">
       <h2>User Login / Sign Up</h2>
@@ -503,7 +503,7 @@
         </p>
         <br>
         <h3>📞 Contact Information</h3>
-        <p style="margin-top:5px; color:#555;"><strong>Phone:</strong> 03284355396</p>
+        <p style="margin-top:5px; color:#555;"><strong>WhatsApp / Phone:</strong> 03284355396</p>
         <p style="color:#555;"><strong>Location:</strong> Multan, Pakistan</p>
       </div>
     </div>
@@ -591,7 +591,7 @@
     </div>
   </div>
 
-  <!-- Delete Product Manager Modal (Opened via 3-Dot Menu) -->
+  <!-- Delete Product Manager Modal -->
   <div class="modal" id="deleteManagerModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeDeleteManagerModal()">&times;</span>
@@ -611,7 +611,7 @@
       <div id="modalRating" style="color:#ff9800; font-size:14px; margin-bottom:10px;"></div>
       <h3 id="modalPrice" style="color:#333; margin-bottom:10px;"></h3>
       <p id="modalDesc" style="line-height:1.5; color:#666; margin-bottom:20px;"></p>
-      <button id="modalBuyLink" class="buy-btn" onclick="recordPurchase()">Buy Now (03284355396)</button>
+      <button id="modalBuyBtn" class="buy-btn">Buy Now via WhatsApp 💬</button>
     </div>
   </div>
 
@@ -636,7 +636,7 @@
 
     const adminPhoneNumber = "03284355396";
     const adminPin = "396";
-    const buyPhoneNumber = "03284355396";
+    const whatsappTargetNumber = "923284355396"; // International Format without '+'
     let allProducts = {};
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -683,7 +683,7 @@
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     };
 
-    // Navigation Switcher (Home, Details, Progress)
+    // Navigation Switcher
     window.switchTab = function(tabId, element) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active-content'));
       document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
@@ -856,7 +856,7 @@
               <div class="product-price">Rs. ${p.price}</div>
               <div class="btn-group">
                 <button class="detail-btn" onclick="showDetail('${key}', '${safeName}', '${p.price}', \`${safeDetails}\`, '${p.image}', '${p.rating}', '${p.sales}')">Detail</button>
-                <button class="buy-btn" onclick="directBuy('${safeName}', '${p.price}')">Buy Now</button>
+                <button class="buy-btn" onclick="directBuy('${key}', '${safeName}', '${p.price}', \`${safeDetails}\`)">Buy Now 💬</button>
               </div>
             </div>
           `;
@@ -889,6 +889,12 @@
       document.getElementById('modalRating').innerText = `★ ${rating || '5.0'} (${sales || '0'} Customers Bought)`;
       document.getElementById('modalPrice').innerText = "Rs. " + price;
       document.getElementById('modalDesc').innerText = details;
+      
+      const buyBtn = document.getElementById('modalBuyBtn');
+      buyBtn.onclick = function() {
+        sendOrderToWhatsApp(id, name, price, details);
+      };
+
       document.getElementById('detailModal').style.display = 'flex';
     };
 
@@ -896,17 +902,30 @@
       document.getElementById('detailModal').style.display = 'none';
     };
 
-    window.directBuy = function(pName, pPrice) {
-      recordSaleInDB(pName, pPrice);
-      window.location.href = `tel:${buyPhoneNumber}`;
+    window.directBuy = function(pId, pName, pPrice, pDetails) {
+      sendOrderToWhatsApp(pId, pName, pPrice, pDetails);
     };
 
-    window.recordPurchase = function() {
-      const name = document.getElementById('modalTitle').innerText;
-      const price = document.getElementById('modalPrice').innerText.replace('Rs. ', '');
-      recordSaleInDB(name, price);
-      window.location.href = `tel:${buyPhoneNumber}`;
-    };
+    // WhatsApp Integration Function
+    function sendOrderToWhatsApp(pId, pName, pPrice, pDetails) {
+      const user = JSON.parse(sessionStorage.getItem('userSession')) || { name: 'Customer', phone: 'Not Provided' };
+
+      recordSaleInDB(pName, pPrice);
+
+      const message = `🛒 *NEW ORDER - USM BAAZIGAR STORE*\n\n` +
+                      `👤 *Customer Name:* ${user.name}\n` +
+                      `📞 *Customer Phone:* ${user.phone}\n\n` +
+                      `📦 *Product Name:* ${pName}\n` +
+                      `🆔 *Product ID:* ${pId}\n` +
+                      `💰 *Price:* Rs. ${pPrice}\n` +
+                      `📝 *Details:* ${pDetails}\n\n` +
+                      `Hello! I want to buy this product. Please process my order.`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${whatsappTargetNumber}?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
+    }
 
     function recordSaleInDB(pName, pPrice) {
       const user = JSON.parse(sessionStorage.getItem('userSession')) || { name: 'Guest', phone: 'Unknown' };
