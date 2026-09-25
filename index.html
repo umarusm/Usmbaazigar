@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Usm Baazigar - Pro E-Commerce & Academy</title>
+  <title>Usm Baazigar - Pro E-Commerce Store</title>
 
-  <!-- External CDNs for PDF Generation & Trading Charts -->
+  <!-- External CDNs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,30 +15,42 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Roboto, sans-serif;
     }
     body {
-      background-color: #f4f6f9;
-      color: #333;
+      background-color: #0b0e14;
+      color: #ffffff;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: linear-gradient(90deg, #ff0055, #7a00ff);
+      color: #fff;
+      text-align: center;
+      padding: 6px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
     }
 
     /* Auth Overlay */
     .auth-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.9);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
     }
     .auth-box {
-      background: white;
+      background: #161b22;
       padding: 30px;
       border-radius: 12px;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      border: 1px solid #30363d;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
     .auth-box h2 {
       margin-bottom: 20px;
@@ -48,91 +60,90 @@
 
     /* Header */
     header {
-      background-color: #f57224;
-      color: white;
-      padding: 12px 20px;
+      background-color: #161b22;
+      padding: 15px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border-bottom: 1px solid #30363d;
     }
     .logo {
       font-size: 22px;
-      font-weight: bold;
+      font-weight: 800;
+      background: linear-gradient(45deg, #f57224, #ff9800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .user-nav {
       display: flex;
       align-items: center;
       gap: 15px;
     }
-    
-    /* User Avatar Circle */
     .user-avatar {
       width: 38px;
       height: 38px;
-      background-color: #ffffff;
-      color: #f57224;
+      background-color: #f57224;
+      color: #fff;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bold;
       font-size: 18px;
-      border: 2px solid #fff;
     }
     .menu-icon {
       font-size: 26px;
       cursor: pointer;
       user-select: none;
-      display: none; /* Only Admin */
+      display: none;
     }
     .dropdown-menu {
       display: none;
       position: absolute;
-      right: 20px;
-      top: 55px;
-      background: white;
-      color: #333;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-radius: 6px;
+      right: 25px;
+      top: 60px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
       overflow: hidden;
       z-index: 101;
-      width: 220px;
+      width: 240px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     }
     .dropdown-menu button {
       width: 100%;
       padding: 12px 15px;
       border: none;
       background: none;
+      color: #e6edf3;
       text-align: left;
       font-size: 14px;
       cursor: pointer;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #21262d;
     }
     .dropdown-menu button:hover {
-      background-color: #f8f9fa;
+      background-color: #21262d;
     }
 
-    /* Navigation Bar Links (Home, Details, Progress) */
+    /* Navigation Bar Links */
     .nav-bar {
-      background-color: #ffffff;
+      background-color: #161b22;
       display: flex;
       justify-content: center;
       gap: 15px;
-      padding: 10px 0;
-      border-bottom: 2px solid #e0e0e0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      padding: 12px 0;
+      border-bottom: 1px solid #30363d;
     }
     .nav-tab {
-      padding: 8px 16px;
+      padding: 8px 18px;
       border: none;
       background: none;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
-      color: #555;
+      color: #8b949e;
       cursor: pointer;
       border-radius: 20px;
       transition: all 0.3s;
@@ -142,16 +153,16 @@
       color: white;
     }
 
-    /* Main Layout */
+    /* Container */
     .container {
       max-width: 1200px;
       margin: 20px auto;
       padding: 0 15px;
     }
 
-    /* Search Bar Section */
+    /* Search Bar */
     .search-box-container {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       display: flex;
       justify-content: center;
     }
@@ -160,209 +171,169 @@
       max-width: 600px;
       padding: 12px 20px;
       font-size: 15px;
-      border: 2px solid #f57224;
-      border-radius: 25px;
+      background: #161b22;
+      color: #fff;
+      border: 1px solid #30363d;
+      border-radius: 30px;
       outline: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    /* Trading Market Chart Section */
-    .chart-card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    .chart-card h3 {
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-
-    /* Hero Banner */
-    .hero-banner {
+    /* Auto Slider Banner Section */
+    .hero-banner-container {
+      position: relative;
       width: 100%;
-      min-height: 200px;
-      background-color: #1e3c72;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 25px;
-      position: relative;
+      height: 320px;
+      border-radius: 12px;
       overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      border: 1px solid #30363d;
     }
-    .hero-banner-overlay {
+    .slide-image {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.45);
-      z-index: 1;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
     }
-    .hero-content {
-      position: relative;
+    .slide-image.active {
+      opacity: 1;
+    }
+    .banner-overlay {
+      position: absolute;
+      bottom: 0; left: 0; width: 100%;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      padding: 20px;
       z-index: 2;
     }
-    .hero-banner h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: #ffc107;
+
+    /* Circular Shop By Category Section (Added Real Images) */
+    .category-section {
+      margin-bottom: 35px;
+      text-align: center;
+    }
+    .category-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      overflow-x: auto;
+      padding: 15px 5px;
+    }
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .category-circle {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      border: 2px solid #f57224;
+      padding: 3px;
+      transition: transform 0.3s;
+      background: #161b22;
+    }
+    .category-circle img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .category-circle:hover {
+      transform: scale(1.1);
+      border-color: #ff9800;
+    }
+    .category-title {
+      font-size: 13px;
+      margin-top: 8px;
+      color: #c9d1d9;
+      font-weight: 500;
     }
 
-    /* Products Section */
+    /* Product Section */
     .section-title {
       font-size: 22px;
-      margin-bottom: 15px;
-      border-left: 5px solid #f57224;
-      padding-left: 10px;
+      margin-bottom: 20px;
+      border-left: 4px solid #f57224;
+      padding-left: 12px;
+      color: #ffffff;
     }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+      gap: 20px;
     }
     @media (max-width: 768px) {
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .hero-banner-container { height: 200px; }
     }
 
     .product-card {
-      background: white;
-      border-radius: 8px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: #f57224;
     }
     .product-image {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
-      background-color: #eee;
+      background-color: #21262d;
     }
-    .product-info {
-      padding: 12px;
-    }
+    .product-info { padding: 15px; }
     .product-title {
       font-size: 15px;
       font-weight: 600;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .rating-box {
-      font-size: 12px;
-      color: #ff9800;
-      margin-bottom: 6px;
-    }
-    .sales-count {
-      color: #666;
-      font-size: 11px;
-    }
-    .product-price {
-      font-size: 16px;
-      color: #f57224;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .detail-btn {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+    .rating-box { font-size: 12px; color: #ffc107; margin-bottom: 6px; }
+    .product-price { font-size: 17px; color: #28a745; font-weight: bold; margin-bottom: 12px; }
+    
+    .btn-group { display: flex; flex-direction: column; gap: 6px; }
     .buy-btn {
-      background-color: #25d366;
+      background: #25d366;
       color: white;
-      text-align: center;
-      text-decoration: none;
-      font-weight: bold;
+      border: none;
       padding: 8px;
-      border-radius: 4px;
-      display: block;
-      border: none;
+      border-radius: 6px;
       cursor: pointer;
+      font-weight: bold;
     }
 
-    /* Section Views */
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active-content {
-      display: block;
-    }
+    .tab-content { display: none; }
+    .tab-content.active-content { display: block; }
 
-    /* Progress Cards Styling */
-    .progress-card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .progress-bar-bg {
-      background: #eee;
-      border-radius: 10px;
-      height: 12px;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-    .progress-bar-fill {
-      background: #28a745;
-      height: 100%;
-      border-radius: 10px;
-    }
-
-    /* Delete Manager Item inside Modal */
-    .delete-item-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .del-btn-danger {
-      background: #dc3545;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    /* Modals */
+    /* Modals Styling */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
       z-index: 1000;
     }
     .modal-content {
-      background: white;
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #fff;
       padding: 25px;
-      border-radius: 8px;
+      border-radius: 10px;
       width: 90%;
       max-width: 500px;
       position: relative;
@@ -374,20 +345,17 @@
       top: 10px; right: 15px;
       font-size: 24px;
       cursor: pointer;
+      color: #8b949e;
     }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #8b949e; }
     .form-group input, .form-group textarea {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #fff;
+      border-radius: 6px;
     }
     .submit-btn {
       width: 100%;
@@ -395,26 +363,16 @@
       background-color: #28a745;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-    }
-    .pdf-btn {
-      background-color: #17a2b8;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 4px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
+
+  <div class="top-bar">🔥 SPECIAL OFFER: Professional Store Upgrades Available Now!</div>
 
   <!-- Login Modal -->
   <div class="auth-overlay" id="authOverlay">
@@ -442,92 +400,94 @@
   <header>
     <div class="logo">Usm Baazigar</div>
     <div class="user-nav">
-      <!-- User Avatar Circle -->
       <div class="user-avatar" id="userAvatar">U</div>
-      <!-- 3-Dot Icon for Admin -->
       <div class="menu-icon" id="adminMenuIcon" onclick="toggleDropdown()">&#8942;</div>
     </div>
 
-    <!-- 3-Dot Dropdown Menu Options -->
     <div class="dropdown-menu" id="dropdownMenu">
       <button onclick="openAdminPanel()">⚙️ Admin Panel</button>
       <button onclick="openDeleteManagerModal()">🗑️ Manage & Delete Products</button>
-      <button onclick="logout()" style="color:red;">🚪 Logout</button>
+      <button onclick="logout()" style="color:#ff5555;">🚪 Logout</button>
     </div>
   </header>
 
-  <!-- Navigation Bar (Home, Details, Work In Progress) -->
+  <!-- Navigation -->
   <nav class="nav-bar">
     <button class="nav-tab active" onclick="switchTab('homeTab', this)">Home</button>
     <button class="nav-tab" onclick="switchTab('detailsTab', this)">Details</button>
-    <button class="nav-tab" onclick="switchTab('progressTab', this)">Work In Progress</button>
   </nav>
 
   <div class="container">
 
-    <!-- SEARCH BAR SECTION -->
+    <!-- Search Bar -->
     <div class="search-box-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search products, courses, services..." onkeyup="filterProducts()">
+      <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search products, collections..." onkeyup="filterProducts()">
     </div>
 
-    <!-- HOME TAB CONTENT -->
+    <!-- HOME TAB -->
     <div id="homeTab" class="tab-content active-content">
-      <!-- Hero Banner -->
-      <div class="hero-banner" id="heroBanner">
-        <div class="hero-banner-overlay"></div>
-        <div class="hero-content">
-          <h1 id="bannerTitle">Graphics Course Designing</h1>
-          <p id="bannerDesc">Master Graphic Design & Digital Art with Professional Training!</p>
+      
+      <!-- 4 Poster Auto Slide Banner Container -->
+      <div class="hero-banner-container" id="heroBanner">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&q=80" class="slide-image active" id="slide1">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=80" class="slide-image" id="slide2">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200&q=80" class="slide-image" id="slide3">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80" class="slide-image" id="slide4">
+        
+        <div class="banner-overlay">
+          <h2 id="bannerTitle" style="color:#ff9800;">Featured Store Banner</h2>
+          <p id="bannerDesc" style="color:#c9d1d9;">Autosliding every 5 seconds...</p>
         </div>
       </div>
 
-      <!-- Trading Style Market Chart -->
-      <div class="chart-card">
-        <h3>📈 Store Sales & Market Trend Analytics</h3>
-        <canvas id="salesChart" height="90"></canvas>
+      <!-- Shop By Collections (Added High Quality Images Here) -->
+      <div class="category-section">
+        <h3 style="margin-bottom: 15px; color:#8b949e;">SHOP BY COLLECTIONS</h3>
+        <div class="category-grid">
+          <div class="category-item">
+            <div class="category-circle">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" alt="Watches">
+            </div>
+            <span class="category-title">Watches</span>
+          </div>
+          <div class="category-item">
+            <div class="category-circle">
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=200&q=80" alt="Kitchen">
+            </div>
+            <span class="category-title">Kitchen</span>
+          </div>
+          <div class="category-item">
+            <div class="category-circle">
+              <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&q=80" alt="Health">
+            </div>
+            <span class="category-title">Health</span>
+          </div>
+          <div class="category-item">
+            <div class="category-circle">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80" alt="Gadgets">
+            </div>
+            <span class="category-title">Gadgets</span>
+          </div>
+        </div>
       </div>
 
       <!-- Products Grid -->
-      <h2 class="section-title">Products & Courses</h2>
+      <h2 class="section-title">Best Sellers</h2>
       <div class="product-grid" id="productGrid">
-        <p style="grid-column: 1/-1; text-align:center;">Loading Live Products...</p>
+        <p style="grid-column: 1/-1; text-align:center; color:#8b949e;">Loading Products...</p>
       </div>
     </div>
 
-    <!-- DETAILS TAB CONTENT -->
+    <!-- DETAILS TAB -->
     <div id="detailsTab" class="tab-content">
-      <div class="chart-card">
-        <h2 style="color:#f57224; margin-bottom:10px;">About Usm Baazigar Online Graphics</h2>
-        <p style="line-height:1.6; color:#555;">
-          Welcome to Usm Baazigar Official Academy and Digital Services. We offer high-quality online courses for graphic designing, video editing, and digital media marketing.
+      <div style="background:#161b22; padding:20px; border-radius:10px; border:1px solid #30363d;">
+        <h2 style="color:#f57224; margin-bottom:10px;">About Usm Baazigar Online Store</h2>
+        <p style="line-height:1.6; color:#c9d1d9;">
+          Welcome to Usm Baazigar Official Academy & E-Commerce Store.
         </p>
         <br>
         <h3>📞 Contact Information</h3>
-        <p style="margin-top:5px; color:#555;"><strong>WhatsApp / Phone:</strong> 03284355396</p>
-        <p style="color:#555;"><strong>Location:</strong> Multan, Pakistan</p>
-      </div>
-    </div>
-
-    <!-- WORK IN PROGRESS TAB CONTENT -->
-    <div id="progressTab" class="tab-content">
-      <h2 class="section-title">Current Projects & Course Work Progress</h2>
-      
-      <div class="progress-card">
-        <h3>🎨 Advance UI/UX Design Course Syllabus</h3>
-        <p style="color:#666; font-size:14px; margin-top:5px;">Status: Updating Module 4 & Student Materials</p>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill" style="width: 80%;"></div>
-        </div>
-        <span style="font-size:12px; color:#888;">80% Completed</span>
-      </div>
-
-      <div class="progress-card">
-        <h3>💻 Client Portal & Live Certificate Generation</h3>
-        <p style="color:#666; font-size:14px; margin-top:5px;">Status: Testing Payment Gateway Integrations</p>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill" style="width: 65%;"></div>
-        </div>
-        <span style="font-size:12px; color:#888;">65% Completed</span>
+        <p style="margin-top:5px; color:#c9d1d9;"><strong>WhatsApp / Phone:</strong> 03284355396</p>
       </div>
     </div>
 
@@ -538,25 +498,29 @@
     <div class="modal-content">
       <span class="close-btn" onclick="closeAdminPanel()">&times;</span>
       <h2 style="margin-bottom: 15px; color: #f57224;">Admin Control Panel</h2>
-      
-      <button class="pdf-btn" onclick="generatePDFReport()">📄 Download Sales PDF Report</button>
 
-      <!-- Banner Update -->
-      <form id="bannerForm" style="margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 15px;">
-        <h4 style="margin-bottom: 10px;">Update Main Banner</h4>
+      <!-- 4 Banner Upload Form -->
+      <form id="bannerForm" style="margin-bottom: 25px; border-bottom: 1px solid #30363d; padding-bottom: 15px;">
+        <h4 style="margin-bottom: 10px; color:#ff9800;">Update 4 Autoslide Banner Posters</h4>
+        
         <div class="form-group">
-          <label>Banner Title</label>
-          <input type="text" id="newBannerTitle">
+          <label>Poster 1 Image</label>
+          <input type="file" id="bannerImg1" accept="image/*">
         </div>
         <div class="form-group">
-          <label>Banner Description</label>
-          <input type="text" id="newBannerDesc">
+          <label>Poster 2 Image</label>
+          <input type="file" id="bannerImg2" accept="image/*">
         </div>
         <div class="form-group">
-          <label>Banner Background Image</label>
-          <input type="file" id="newBannerImg" accept="image/*">
+          <label>Poster 3 Image</label>
+          <input type="file" id="bannerImg3" accept="image/*">
         </div>
-        <button type="submit" class="submit-btn" style="background-color: #ff9800;">Save Banner</button>
+        <div class="form-group">
+          <label>Poster 4 Image</label>
+          <input type="file" id="bannerImg4" accept="image/*">
+        </div>
+
+        <button type="submit" class="submit-btn" style="background-color: #ff9800;">Save & Start 5s Slide</button>
       </form>
 
       <!-- Add Product -->
@@ -575,14 +539,6 @@
           <input type="number" step="0.1" max="5" min="1" id="productRating" value="5.0" required>
         </div>
         <div class="form-group">
-          <label>Buyers Count (e.g. 120)</label>
-          <input type="number" id="productSales" value="10" required>
-        </div>
-        <div class="form-group">
-          <label>Product Details</label>
-          <textarea id="productDetails" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
           <label>Product Image</label>
           <input type="file" id="productImage" accept="image/*" required>
         </div>
@@ -596,22 +552,7 @@
     <div class="modal-content">
       <span class="close-btn" onclick="closeDeleteManagerModal()">&times;</span>
       <h2 style="margin-bottom: 15px; color: #dc3545;">Manage & Delete Products</h2>
-      <div id="deleteListContainer">
-        <!-- Live Products List for Delete -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Popup -->
-  <div class="modal" id="detailModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeDetailModal()">&times;</span>
-      <img id="modalImg" style="width:100%; height:200px; object-fit:cover; border-radius:5px; margin-bottom:15px;">
-      <h2 id="modalTitle" style="color:#f57224; margin-bottom:5px;"></h2>
-      <div id="modalRating" style="color:#ff9800; font-size:14px; margin-bottom:10px;"></div>
-      <h3 id="modalPrice" style="color:#333; margin-bottom:10px;"></h3>
-      <p id="modalDesc" style="line-height:1.5; color:#666; margin-bottom:20px;"></p>
-      <button id="modalBuyBtn" class="buy-btn">Buy Now via WhatsApp 💬</button>
+      <div id="deleteListContainer"></div>
     </div>
   </div>
 
@@ -636,14 +577,16 @@
 
     const adminPhoneNumber = "03284355396";
     const adminPin = "396";
-    const whatsappTargetNumber = "923284355396"; // International Format without '+'
+    const whatsappTargetNumber = "923284355396";
     let allProducts = {};
+    let slideIndex = 0;
+    let sliderTimer = null;
 
     window.addEventListener('DOMContentLoaded', () => {
       checkLoginStatus();
       listenToBannerUpdates();
       listenToProductUpdates();
-      initChart();
+      startAutoSlider();
     });
 
     function checkLoginStatus() {
@@ -683,7 +626,6 @@
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     };
 
-    // Navigation Switcher
     window.switchTab = function(tabId, element) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active-content'));
       document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
@@ -692,7 +634,20 @@
       element.classList.add('active');
     };
 
-    // Admin Access
+    // Auto Slider Logic - Set to 5000ms (5 Seconds)
+    function startAutoSlider() {
+      if (sliderTimer) clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => {
+        const slides = document.querySelectorAll('.slide-image');
+        if (slides.length > 0) {
+          slides[slideIndex].classList.remove('active');
+          slideIndex = (slideIndex + 1) % slides.length;
+          slides[slideIndex].classList.add('active');
+        }
+      }, 5000); // 5 Seconds Interval
+    }
+
+    // Admin Panel Controls
     window.openAdminPanel = function() {
       const pin = prompt("Enter Admin PIN:");
       if (pin === adminPin) {
@@ -706,90 +661,49 @@
       document.getElementById('adminModal').style.display = 'none';
     };
 
-    // Open Delete Manager via 3-Dot Menu
-    window.openDeleteManagerModal = function() {
-      const pin = prompt("Enter Admin PIN to Manage/Delete Products:");
-      if (pin === adminPin) {
-        renderDeleteList();
-        document.getElementById('deleteManagerModal').style.display = 'flex';
-      } else if (pin !== null) {
-        alert("Incorrect PIN!");
-      }
-    };
-
-    window.closeDeleteManagerModal = function() {
-      document.getElementById('deleteManagerModal').style.display = 'none';
-    };
-
-    function renderDeleteList() {
-      const container = document.getElementById('deleteListContainer');
-      container.innerHTML = '';
-
-      if (Object.keys(allProducts).length === 0) {
-        container.innerHTML = '<p>No products available to delete.</p>';
-        return;
-      }
-
-      Object.keys(allProducts).forEach(key => {
-        const p = allProducts[key];
-        const row = document.createElement('div');
-        row.className = 'delete-item-row';
-        row.innerHTML = `
-          <div>
-            <strong>${p.name}</strong> - Rs. ${p.price}
-          </div>
-          <button class="del-btn-danger" onclick="deleteProduct('${key}')">Delete</button>
-        `;
-        container.appendChild(row);
-      });
-    }
-
-    window.deleteProduct = function(productId) {
-      if (confirm("Are you sure you want to delete this product?")) {
-        remove(ref(db, 'products/' + productId)).then(() => {
-          alert("Product deleted!");
-          renderDeleteList();
-        });
-      }
-    };
-
-    // Banner Updates
-    document.getElementById('bannerForm').addEventListener('submit', (e) => {
+    // Upload 4 Images
+    document.getElementById('bannerForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const title = document.getElementById('newBannerTitle').value;
-      const desc = document.getElementById('newBannerDesc').value;
-      const file = document.getElementById('newBannerImg').files[0];
+      
+      const file1 = document.getElementById('bannerImg1').files[0];
+      const file2 = document.getElementById('bannerImg2').files[0];
+      const file3 = document.getElementById('bannerImg3').files[0];
+      const file4 = document.getElementById('bannerImg4').files[0];
 
-      const saveBanner = (bgImageUrl = null) => {
-        const updateData = {};
-        if (title) updateData.title = title;
-        if (desc) updateData.desc = desc;
-        if (bgImageUrl) updateData.bgImage = bgImageUrl;
-
-        set(ref(db, 'banner/'), updateData).then(() => {
-          alert("Banner updated!");
-          closeAdminPanel();
+      const convertBase64 = (file) => {
+        return new Promise((resolve) => {
+          if (!file) resolve(null);
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.readAsDataURL(file);
         });
       };
 
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) { saveBanner(evt.target.result); };
-        reader.readAsDataURL(file);
-      } else {
-        saveBanner();
-      }
+      const img1 = await convertBase64(file1);
+      const img2 = await convertBase64(file2);
+      const img3 = await convertBase64(file3);
+      const img4 = await convertBase64(file4);
+
+      const bannerData = {};
+      if (img1) bannerData.img1 = img1;
+      if (img2) bannerData.img2 = img2;
+      if (img3) bannerData.img3 = img3;
+      if (img4) bannerData.img4 = img4;
+
+      set(ref(db, 'banners/'), bannerData).then(() => {
+        alert("All 4 Banner Posters updated successfully!");
+        closeAdminPanel();
+      });
     });
 
     function listenToBannerUpdates() {
-      onValue(ref(db, 'banner/'), (snapshot) => {
+      onValue(ref(db, 'banners/'), (snapshot) => {
         const data = snapshot.val();
         if (data) {
-          if (data.title) document.getElementById('bannerTitle').innerText = data.title;
-          if (data.desc) document.getElementById('bannerDesc').innerText = data.desc;
-          if (data.bgImage) {
-            document.getElementById('heroBanner').style.backgroundImage = `url('${data.bgImage}')`;
-          }
+          if (data.img1) document.getElementById('slide1').src = data.img1;
+          if (data.img2) document.getElementById('slide2').src = data.img2;
+          if (data.img3) document.getElementById('slide3').src = data.img3;
+          if (data.img4) document.getElementById('slide4').src = data.img4;
         }
       });
     }
@@ -800,8 +714,6 @@
       const name = document.getElementById('productName').value;
       const price = document.getElementById('productPrice').value;
       const rating = document.getElementById('productRating').value;
-      const sales = document.getElementById('productSales').value;
-      const details = document.getElementById('productDetails').value;
       const file = document.getElementById('productImage').files[0];
 
       if (file) {
@@ -812,8 +724,6 @@
             name: name,
             price: price,
             rating: rating,
-            sales: sales,
-            details: details,
             image: evt.target.result
           }).then(() => {
             alert("Product Uploaded Live!");
@@ -843,158 +753,64 @@
           const card = document.createElement('div');
           card.className = 'product-card';
 
-          const safeDetails = p.details ? p.details.replace(/`/g, "\\`").replace(/'/g, "\\'") : "";
-          const safeName = p.name ? p.name.replace(/'/g, "\\'") : "";
-
           card.innerHTML = `
-            <img src="${p.image}" class="product-image" alt="${safeName}">
+            <img src="${p.image}" class="product-image" alt="${p.name}">
             <div class="product-info">
               <div class="product-title">${p.name}</div>
-              <div class="rating-box">
-                ★ ${p.rating || '5.0'} <span class="sales-count">(${p.sales || '0'} Sold)</span>
-              </div>
+              <div class="rating-box">★ ${p.rating || '5.0'}</div>
               <div class="product-price">Rs. ${p.price}</div>
               <div class="btn-group">
-                <button class="detail-btn" onclick="showDetail('${key}', '${safeName}', '${p.price}', \`${safeDetails}\`, '${p.image}', '${p.rating}', '${p.sales}')">Detail</button>
-                <button class="buy-btn" onclick="directBuy('${key}', '${safeName}', '${p.price}', \`${safeDetails}\`)">Buy Now 💬</button>
+                <button class="buy-btn" onclick="directBuy('${key}', '${p.name}', '${p.price}')">Buy Now 💬</button>
               </div>
             </div>
           `;
           grid.appendChild(card);
         });
       } else {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No matching products found.</p>';
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#8b949e;">No products available.</p>';
       }
     }
 
-    // Instant Search Bar Functionality
-    window.filterProducts = function() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = {};
+    window.directBuy = function(pId, pName, pPrice) {
+      const user = JSON.parse(sessionStorage.getItem('userSession')) || { name: 'Customer', phone: 'Not Provided' };
+      const message = `🛒 *NEW ORDER*\n\n👤 Name: ${user.name}\n📞 Phone: ${user.phone}\n📦 Product: ${pName}\n💰 Price: Rs. ${pPrice}`;
+      window.open(`https://wa.me/${whatsappTargetNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    };
 
+    // Delete Manager
+    window.openDeleteManagerModal = function() {
+      const pin = prompt("Enter Admin PIN:");
+      if (pin === adminPin) {
+        renderDeleteList();
+        document.getElementById('deleteManagerModal').style.display = 'flex';
+      }
+    };
+
+    window.closeDeleteManagerModal = function() {
+      document.getElementById('deleteManagerModal').style.display = 'none';
+    };
+
+    function renderDeleteList() {
+      const container = document.getElementById('deleteListContainer');
+      container.innerHTML = '';
       Object.keys(allProducts).forEach(key => {
         const p = allProducts[key];
-        if (p.name.toLowerCase().includes(query) || (p.details && p.details.toLowerCase().includes(query))) {
-          filtered[key] = p;
-        }
-      });
-
-      displayProducts(filtered);
-    };
-
-    // Modal Details
-    window.showDetail = function(id, name, price, details, image, rating, sales) {
-      document.getElementById('modalImg').src = image;
-      document.getElementById('modalTitle').innerText = name;
-      document.getElementById('modalRating').innerText = `★ ${rating || '5.0'} (${sales || '0'} Customers Bought)`;
-      document.getElementById('modalPrice').innerText = "Rs. " + price;
-      document.getElementById('modalDesc').innerText = details;
-      
-      const buyBtn = document.getElementById('modalBuyBtn');
-      buyBtn.onclick = function() {
-        sendOrderToWhatsApp(id, name, price, details);
-      };
-
-      document.getElementById('detailModal').style.display = 'flex';
-    };
-
-    window.closeDetailModal = function() {
-      document.getElementById('detailModal').style.display = 'none';
-    };
-
-    window.directBuy = function(pId, pName, pPrice, pDetails) {
-      sendOrderToWhatsApp(pId, pName, pPrice, pDetails);
-    };
-
-    // WhatsApp Integration Function
-    function sendOrderToWhatsApp(pId, pName, pPrice, pDetails) {
-      const user = JSON.parse(sessionStorage.getItem('userSession')) || { name: 'Customer', phone: 'Not Provided' };
-
-      recordSaleInDB(pName, pPrice);
-
-      const message = `🛒 *NEW ORDER - USM BAAZIGAR STORE*\n\n` +
-                      `👤 *Customer Name:* ${user.name}\n` +
-                      `📞 *Customer Phone:* ${user.phone}\n\n` +
-                      `📦 *Product Name:* ${pName}\n` +
-                      `🆔 *Product ID:* ${pId}\n` +
-                      `💰 *Price:* Rs. ${pPrice}\n` +
-                      `📝 *Details:* ${pDetails}\n\n` +
-                      `Hello! I want to buy this product. Please process my order.`;
-
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/${whatsappTargetNumber}?text=${encodedMessage}`;
-      
-      window.open(whatsappUrl, '_blank');
-    }
-
-    function recordSaleInDB(pName, pPrice) {
-      const user = JSON.parse(sessionStorage.getItem('userSession')) || { name: 'Guest', phone: 'Unknown' };
-      const newSaleRef = push(ref(db, 'salesLogs/'));
-      set(newSaleRef, {
-        productName: pName,
-        price: pPrice,
-        userName: user.name,
-        userPhone: user.phone,
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString()
+        const row = document.createElement('div');
+        row.style.cssText = "display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #30363d;";
+        row.innerHTML = `
+          <div><strong>${p.name}</strong> - Rs. ${p.price}</div>
+          <button style="background:#dc3545; color:#fff; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;" onclick="deleteProduct('${key}')">Delete</button>
+        `;
+        container.appendChild(row);
       });
     }
 
-    function initChart() {
-      const ctx = document.getElementById('salesChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Current Week'],
-          datasets: [{
-            label: 'Store Sales Trend (PKR)',
-            data: [12000, 19000, 15000, 28000, 35000],
-            borderColor: '#28a745',
-            backgroundColor: 'rgba(40, 167, 69, 0.1)',
-            borderWidth: 3,
-            fill: true,
-            tension: 0.4
-          }]
-        },
-        options: { responsive: true }
-      });
-    }
-
-    window.generatePDFReport = function() {
-      onValue(ref(db, 'salesLogs/'), (snapshot) => {
-        const data = snapshot.val();
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-
-        doc.setFontSize(18);
-        doc.setTextColor(245, 114, 36);
-        doc.text("Usm Baazigar - Sales Report", 14, 20);
-
-        const tableColumn = ["Customer", "Phone", "Product", "Price (PKR)", "Date"];
-        const tableRows = [];
-
-        if (data) {
-          Object.keys(data).forEach(key => {
-            const sale = data[key];
-            tableRows.push([
-              sale.userName || 'N/A',
-              sale.userPhone || 'N/A',
-              sale.productName || 'N/A',
-              sale.price || '0',
-              sale.date || 'N/A'
-            ]);
-          });
-        }
-
-        doc.autoTable({
-          head: [tableColumn],
-          body: tableRows,
-          startY: 30,
-          headStyles: { fillColor: [245, 114, 36] }
+    window.deleteProduct = function(productId) {
+      if (confirm("Delete this product?")) {
+        remove(ref(db, 'products/' + productId)).then(() => {
+          renderDeleteList();
         });
-
-        doc.save(`Sales_Report.pdf`);
-      }, { onlyOnce: true });
+      }
     };
   </script>
 </body>
